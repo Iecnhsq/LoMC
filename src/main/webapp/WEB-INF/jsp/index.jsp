@@ -12,6 +12,7 @@
     </head>
     <body>
         <div>
+		
             <a href="about.html">about</a>
             <a href="index.html">index</a>
             <a href="login.html">login</a>
@@ -19,6 +20,7 @@
             <a href="recovery.html">recovery</a>
             <a href="register.html">register</a>
             <a href="support.html">support</a>
+			
         </div>
     </body>
 </html>
