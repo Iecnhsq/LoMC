@@ -1,0 +1,12 @@
+body {
+    background: #386383;
+    font-size: 14pt;
+    font-family: Helvetica, Verdana, cursive;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: gainsboro;
+}
