@@ -35,6 +35,14 @@
         </property>
     </bean>
     
+    <bean id="udao" class="dao.UserDAO"/>
+    
+    <bean id="aboutNewsSupportService" class="service.AboutNewsSupportService"/>
     <bean id="indexService" class="service.IndexService"/>
+    <bean id="loginService" class="service.LoginService"/>
+    <bean id="mainService" class="service.MainService"/>
+    <bean id="recoveryService" class="service.RecoveryService"/>
+    <bean id="registrationService" class="service.RegistrationService"/>
+    <bean id="accountService" class="service.AccountService"/>
     
 </beans>

@@ -30,6 +30,8 @@
         <url-pattern>/recovery.html</url-pattern>
         <url-pattern>/register.html</url-pattern>
         <url-pattern>/support.html</url-pattern>
+        
+        <url-pattern>/main.html</url-pattern>
     </servlet-mapping>
     
     <listener>

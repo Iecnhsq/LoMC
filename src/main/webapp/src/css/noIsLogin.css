@@ -10,3 +10,22 @@ a {
 a:hover {
     color: gainsboro;
 }
+footer{
+    margin: 20px auto;
+    width: 1024px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+fieldset{
+    border: none;
+}
+.comdiv{
+    margin: 20px auto;
+    width: 1024px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+}

@@ -1,0 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+<div class="comdiv">
+    <a href="account.html" onclick="playAudio();">Account</a>
+    <a href="main.html?exit=true" onclick="playAudio();">Exit</a>
+</div>
