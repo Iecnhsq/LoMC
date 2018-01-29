@@ -16,20 +16,18 @@ public class LoginService {
     public void sendRedirectLoginInSesion(HttpServletResponse response) {
         try {
             response.sendRedirect("main.html");
-            System.out.println("Login not null! Send redirect to main!");
             LOGGER.info("Login not null! Send redirect to main!");
         } catch (IOException ex) {
-            System.out.println("Error: " + ex);
+            LOGGER.error("Error: " + ex);
         }
     }
 
     public void sendRedirectLoginInUser(HttpServletResponse response) {
         try {
             response.sendRedirect("main.html");
-            System.out.println("Login In User! Send redirect to main!");
             LOGGER.info("Login In User! Send redirect to main!");
         } catch (IOException ex) {
-            System.out.println("Error: " + ex);
+            LOGGER.error("Error: " + ex);
         }
     }
 

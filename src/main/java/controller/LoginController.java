@@ -26,19 +26,15 @@ public class LoginController {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            //Login not null! Send redirect to main!
             loginService.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("login");
             String login = request.getParameter("login");
-            //String password = request.getParameter("password");            
-
             if (login != null && login.length() >= 4) {
                 String password = request.getParameter("password");
                 User u = udao.getUserByLogin(login);
                 if (u.getPass().equals(password)) {
                     request.getSession().setAttribute("login", login);
-                    //Login In User! Send redirect to main!
                     loginService.sendRedirectLoginInUser(response); 
                 } else {
                     return new ModelAndView("login");
@@ -46,7 +42,6 @@ public class LoginController {
             } else {
                 return new ModelAndView("login");
             }
-
             return model;
         }
         return null;

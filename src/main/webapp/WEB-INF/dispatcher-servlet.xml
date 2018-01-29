@@ -36,6 +36,7 @@
     </bean>
     
     <bean id="udao" class="dao.UserDAO"/>
+    <bean id="ndao" class="dao.NewsDAO"/>
     
     <bean id="aboutNewsSupportService" class="service.AboutNewsSupportService"/>
     <bean id="indexService" class="service.IndexService"/>

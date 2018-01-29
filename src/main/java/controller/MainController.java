@@ -28,10 +28,9 @@ public class MainController {
         if (login == null) {
             try {
                 response.sendRedirect("index.html");
-                System.out.println("Login is null! Send redirect to index!");
                 LOGGER.info("Login is null! Send redirect to index!");
             } catch (IOException ex) {
-                System.out.println("Error: " + ex);
+                LOGGER.error("Error: " + ex);
             }
         } else {
             ModelAndView model = new ModelAndView("main");
@@ -41,7 +40,6 @@ public class MainController {
             if (exit != null) {
                 udao.updateUser(u);
                 request.getSession().removeAttribute("login");
-                //User Logout! Send redirect to index!
                 mainService.sendRedirectUserLogout(response);
             } else {
                 isLogin = true;
