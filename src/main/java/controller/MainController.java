@@ -18,9 +18,9 @@ public class MainController {
     public static final Logger LOGGER = Logger.getLogger(MainController.class);
 
     @Autowired
-    UserDAO udao;
+    private UserDAO udao;
     @Autowired
-    MainService mainService;
+    private MainService mainService;
 
     @RequestMapping("/main.html")
     public ModelAndView main(HttpServletRequest request, HttpServletResponse response) {

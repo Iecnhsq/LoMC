@@ -16,7 +16,7 @@ public class AboutNewsSupportController {
     public static final Logger LOGGER = Logger.getLogger(AboutNewsSupportController.class);
 
     @Autowired
-    AboutNewsSupportService aboutNewsSupportService;
+    private AboutNewsSupportService aboutNewsSupportService;
 
     @RequestMapping("/about.html")
     public ModelAndView about(HttpServletRequest request, HttpServletResponse response) {

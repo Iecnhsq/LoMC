@@ -1,6 +1,11 @@
 body {
-    background: #386383;
+    background-image: url(src/img/bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
     font-size: 14pt;
+    color: white;
+    background: #386383;
     font-family: Helvetica, Verdana, cursive;
 }
 a {
@@ -14,12 +19,41 @@ footer{
     margin: 20px auto;
     width: 1024px;
     padding: 10px;
+    font-size: 10pt;
     text-align: center;
     border: 1px solid white;
     border-radius: 10px;
+    background: rgba(48, 48, 48, 0.4);
 }
 fieldset{
     border: none;
+}
+textarea {
+    resize: none;
+    margin: 2px;
+    font-size: 12pt;
+    width: 238px;
+    height: 150px;
+}
+input {
+    padding: 5px;
+    margin: 3px;
+    font-size: 11pt;
+}
+input[type='text'] {
+    width: 230px;
+}
+input[type='tel'] {
+    width: 230px;
+}
+input[type='email'] {
+    width: 230px;
+}
+input[type='password'] {
+    width: 230px;
+}
+input[type='submit'] {
+    width: 244px;
 }
 .comdiv{
     margin: 20px auto;
@@ -28,4 +62,5 @@ fieldset{
     text-align: center;
     border: 1px solid white;
     border-radius: 10px;
+    background: rgba(48, 48, 48, 0.4);
 }

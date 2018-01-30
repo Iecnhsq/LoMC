@@ -1,10 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <div class="comdiv">		
-    <a href="about.html" onclick="playAudio();">about</a>
-    <a href="index.html" onclick="playAudio();">index</a>
-    <a href="login.html" onclick="playAudio();">login</a>
-    <a href="news.html" onclick="playAudio();">news</a>
-    <a href="recovery.html" onclick="playAudio();">recovery</a>
-    <a href="register.html" onclick="playAudio();">register</a>
-    <a href="support.html" onclick="playAudio();">support</a>			
+    <a href="about.html" onclick="playAudio();">About</a>
+    <a href="index.html" onclick="playAudio();">Index</a>
+    <a href="login.html" onclick="playAudio();">Login</a>
+    <a href="news.html" onclick="playAudio();">News</a>
+    <a href="recovery.html" onclick="playAudio();">Recovery</a>
+    <a href="register.html" onclick="playAudio();">Register</a>
+    <a href="support.html" onclick="playAudio();">Support</a>			
 </div>

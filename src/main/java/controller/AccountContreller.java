@@ -18,9 +18,9 @@ public class AccountContreller {
     public static final Logger LOGGER = Logger.getLogger(AccountContreller.class);
 
     @Autowired
-    AccountService accountService;
+    private AccountService accountService;
     @Autowired
-    UserDAO udao;
+    private UserDAO udao;
 
     @RequestMapping("/account.html")
     public ModelAndView account(HttpServletRequest request, HttpServletResponse response) {
