@@ -35,6 +35,10 @@
         
         <url-pattern>/main.html</url-pattern>
         <url-pattern>/account.html</url-pattern>
+        <url-pattern>/class.html</url-pattern>
+        <url-pattern>/cards.html</url-pattern>
+        <url-pattern>/wait.html</url-pattern>
+        <url-pattern>/premium.html</url-pattern>
     </servlet-mapping>
     
     <listener>

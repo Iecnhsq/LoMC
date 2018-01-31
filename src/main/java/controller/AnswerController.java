@@ -18,7 +18,7 @@ public class AnswerController {
     private RecoveryService recoveryService;
 
     @RequestMapping("/answer.html")
-    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView answer(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
             recoveryService.sendRedirectLoginInSesion(response);
