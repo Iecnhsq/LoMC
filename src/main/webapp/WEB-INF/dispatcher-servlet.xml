@@ -48,9 +48,9 @@
     <bean id="recoveryService" class="service.RecoveryService"/>
     <bean id="registrationService" class="service.RegistrationService"/>
     <bean id="accountService" class="service.AccountService"/>
-    <bean id="classController" class="service.ClassController"/>
-    <bean id="cardsController" class="service.CardsController"/>
-    <bean id="waitController" class="service.WaitController"/>
-    <bean id="PremiumService" class="service.PremiumService"/>
+    <bean id="classService" class="service.ClassService"/>
+    <bean id="cardsService" class="service.CardsService"/>
+    <bean id="waitService" class="service.WaitService"/>
+    <bean id="premiumService" class="service.PremiumService"/>
     
 </beans>

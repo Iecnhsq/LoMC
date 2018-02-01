@@ -1,7 +1,10 @@
 package service;
 
+import dao.UserDAO;
+import entity.User;
 import java.io.IOException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,34 @@ public class RecoveryService {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    private UserDAO udao;
+
+    public User getUserInDB(String login) {
+        return udao.getUserByLogin(login);
+    }
+
+    public boolean userExist(User u) {
+        return u != null;
+    }
+
+    public boolean loginValid(String login, User u) {
+        return !(login == null || login.length() < 5 || !u.getLogin().equals(login));
+    }
+
+    public boolean emailValid(String email, User u) {
+        return !(email == null || email.length() < 5 || !u.getEmail().equals(email));
+    }
+
+    public boolean isAnswerEquals(String answer, String ca) {
+        return !(answer == null || answer.length() != 10 || !answer.equals(ca));
+    }
+
+    public void setAttribute(HttpServletRequest request, String email, User u, String ca) {
+        request.getSession().setAttribute("email", email);
+        request.getSession().setAttribute("password", u.getPass());
+        request.getSession().setAttribute("ca", ca);
+    }
 
     public void sendRedirectLoginInSesion(HttpServletResponse response) {
         try {

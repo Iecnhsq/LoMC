@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import service.WaitService;
 
 @Controller
 public class WaitController {
@@ -15,7 +16,7 @@ public class WaitController {
     public static final Logger LOGGER = Logger.getLogger(WaitController.class);
 
     @Autowired
-    WaitController waitController;
+    WaitService waitService;
 
     @RequestMapping("/wait.html")
     public ModelAndView wait(HttpServletRequest request, HttpServletResponse response) {

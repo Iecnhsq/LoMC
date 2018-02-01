@@ -8,7 +8,7 @@ public class User {
 
     @NotNull
     @NotEmpty(message = "Please enter your login!")
-    @Size(min = 4, message = "Login to short!")
+    @Size(min = 5, message = "Login to short!")
     private String login;
 
     @NotNull

@@ -18,9 +18,29 @@ public class AboutNewsSupportService {
     private static final String TOMAIL = "cardgamesupp@gmail.com";
 
     @Autowired
-    NewsDAO ndao;
+    private NewsDAO ndao;
     @Autowired
     private JavaMailSender mailSender;
+
+    private boolean getProblem(String problem) {
+        return !(problem == null || problem.length() <= 10);
+    }
+
+    private boolean getSubject(String subject) {
+        return !(subject == null || subject.length() <= 10);
+    }
+
+    private boolean getEmail(String email) {
+        return !(email == null || email.length() <= 5);
+    }
+
+    private boolean getMessage(String message) {
+        return !(message == null || (message.length() <= 25 && message.length() > 250));
+    }
+
+    public boolean getAllParamPSEM(String problem, String subject, String email, String message) {
+        return !(getProblem(problem) && getSubject(subject) && getEmail(email) && getMessage(message));
+    }
 
     public void getNews(ModelAndView model) {
         List<News> allnews = ndao.getNews();

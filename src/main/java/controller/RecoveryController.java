@@ -1,6 +1,5 @@
 package controller;
 
-import dao.UserDAO;
 import entity.User;
 import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,6 @@ public class RecoveryController {
 
     @Autowired
     private RecoveryService recoveryService;
-    @Autowired
-    private UserDAO udao;
 
     @RequestMapping(value = "/recovery.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView recovery(HttpServletRequest request, HttpServletResponse response) {
@@ -32,22 +29,21 @@ public class RecoveryController {
         } else {
             ModelAndView model = new ModelAndView("recovery");
             String login = request.getParameter("login");
-            if (login == null || login.length() < 4) {
-                return new ModelAndView("recovery");
+            User u = recoveryService.getUserInDB(login);
+            if (!recoveryService.userExist(u)) {
+                LOGGER.info("User is not exist!");
+                return model;
             } else {
-                User u = udao.getUserByLogin(login);
                 String email = request.getParameter("email");
-                if (email == null || email.length() < 5 || !u.getEmail().equals(email)) {
-                    return new ModelAndView("recovery");
+                if (!recoveryService.loginValid(login, u) && !recoveryService.emailValid(email, u)) {
+                    LOGGER.info("Login or E-mail not valid!");
+                    return model;
                 } else {
                     recoveryService.sendMailRecoveryKey(ca, email);
-                    request.getSession().setAttribute("email", email);
-                    request.getSession().setAttribute("password", u.getPass());
-                    request.getSession().setAttribute("ca", ca);
+                    recoveryService.setAttribute(request, email, u, ca);
                     recoveryService.sendRedirectSendRecoveryMail(response);
                 }
             }
-            return model;
         }
         return null;
     }

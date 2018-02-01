@@ -34,7 +34,7 @@ public class RegistrationController {
         } else {
             ModelAndView model = new ModelAndView("register");
             String login = request.getParameter("login");
-            if (login == null || login.length() < 4) {
+            if (login == null || login.length() < 5) {
                 return new ModelAndView("register");
             } else {
                 User u = udao.getUserByLogin(login);

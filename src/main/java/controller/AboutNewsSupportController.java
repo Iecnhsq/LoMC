@@ -50,32 +50,17 @@ public class AboutNewsSupportController {
             aboutNewsSupportService.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("support");
-            boolean isSendMess = false;
-            String problem = request.getParameter("problem");         
-            if (problem == null || problem.length() <= 10) {
-                return new ModelAndView("support");
+            String problem = request.getParameter("problem");
+            String subject = request.getParameter("subject");
+            String email = request.getParameter("email");
+            String message = request.getParameter("message");
+            if (!aboutNewsSupportService.getAllParamPSEM(problem, subject, email, message)) {
+                LOGGER.info("Method 'getAllParamPSEM' is not valid!");
+                return model;
             } else {
-                String subject = request.getParameter("subject");
-                if (subject == null || subject.length() <= 10) {
-                    return new ModelAndView("support");
-                } else {
-                    String email = request.getParameter("email");
-                    if (email == null || email.length() <= 5) {
-                        return new ModelAndView("support");
-                    } else {
-                        String message = request.getParameter("message");
-                        if (message == null || (message.length() <= 25 && message.length() > 250)) {
-                            return new ModelAndView("support");
-                        } else {
-                            aboutNewsSupportService.sendMail(problem, message, email, subject);
-                            isSendMess = true;
-                            aboutNewsSupportService.sendRedirectSendMessageSuccessfully(response);                           
-                        }
-                    }
-                }
+                aboutNewsSupportService.sendMail(problem, message, email, subject);
+                aboutNewsSupportService.sendRedirectSendMessageSuccessfully(response);
             }
-            model.addObject("sendMess", isSendMess);
-            return model;
         }
         return null;
     }

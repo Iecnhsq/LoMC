@@ -24,17 +24,17 @@ public class AnswerController {
             recoveryService.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("answer");
-            String ca = (String) request.getSession().getAttribute("ca");
             String answer = request.getParameter("answer");
-            if (answer == null || answer.length() != 10 || !answer.equals(ca)) {
-                return new ModelAndView("answer");
+            String ca = (String) request.getSession().getAttribute("ca");
+            if (!recoveryService.isAnswerEquals(answer, ca)) {
+                LOGGER.info("Answer is not equals!");
+                return model;
             } else {
                 String email = (String) request.getSession().getAttribute("email");
                 String password = (String) request.getSession().getAttribute("password");
                 recoveryService.sendMailRecoveryPassword(password, email);
                 recoveryService.sendAndRedirectToIndex(response);
             }
-            return model;
         }
         return null;
     }

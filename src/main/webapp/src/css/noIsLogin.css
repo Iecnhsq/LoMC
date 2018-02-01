@@ -1,12 +1,11 @@
 body {
-    background-image: url(src/img/bg-1.jpg);
+    background-image: url(src/img/bg.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
     font-size: 14pt;
+    font-family: "Monotype Corsiva", monospace;
     color: white;
-    background: #386383;
-    font-family: Helvetica, Verdana, cursive;
 }
 a {
     text-decoration: none;
@@ -15,14 +14,12 @@ a {
 a:hover {
     color: gainsboro;
 }
-footer{
+footer, header {
     margin: 20px auto;
     width: 1024px;
     padding: 10px;
-    font-size: 10pt;
-    text-align: center;
-    border: 1px solid white;
     border-radius: 10px;
+    text-align: center;
     background: rgba(48, 48, 48, 0.4);
 }
 fieldset{
@@ -55,12 +52,28 @@ input[type='password'] {
 input[type='submit'] {
     width: 244px;
 }
-.comdiv{
+.block_parent {
     margin: 20px auto;
-    width: 1024px;
-    padding: 10px;
+    width: 1044px;
     text-align: center;
-    border: 1px solid white;
+}
+
+.clear {
+    clear: both;
+}
+
+.block_left {
+    float: left;
     border-radius: 10px;
+    width: 650px;
+    padding: 10px;
+    background: rgba(48, 48, 48, 0.4);
+}
+
+.block_right {
+    float: right;
+    border-radius: 10px;
+    width: 250px;
+    padding: 10px;
     background: rgba(48, 48, 48, 0.4);
 }
