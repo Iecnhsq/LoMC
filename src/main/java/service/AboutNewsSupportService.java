@@ -22,24 +22,24 @@ public class AboutNewsSupportService {
     @Autowired
     private JavaMailSender mailSender;
 
-    private boolean getProblem(String problem) {
-        return !(problem == null || problem.length() <= 10);
+    public boolean allParametrNull(String problem, String subject, String email, String message) {
+        return !(problem == null || subject == null || email == null || message == null);
     }
 
-    private boolean getSubject(String subject) {
-        return !(subject == null || subject.length() <= 10);
+    public boolean getProblem(String problem) {
+        return !(problem.length() < 10);
     }
 
-    private boolean getEmail(String email) {
-        return !(email == null || email.length() <= 5);
+    public boolean getSubject(String subject) {
+        return !(subject.length() < 10);
     }
 
-    private boolean getMessage(String message) {
-        return !(message == null || (message.length() <= 25 && message.length() > 250));
+    public boolean getEmail(String email) {
+        return !(email.length() < 5);
     }
 
-    public boolean getAllParamPSEM(String problem, String subject, String email, String message) {
-        return !(getProblem(problem) && getSubject(subject) && getEmail(email) && getMessage(message));
+    public boolean getMessage(String message) {
+        return !(message.length() < 25 && message.length() > 250);
     }
 
     public void getNews(ModelAndView model) {
@@ -60,18 +60,9 @@ public class AboutNewsSupportService {
         });
     }
 
-    public void sendRedirectLoginInSesion(HttpServletResponse response) {
-        try {
-            response.sendRedirect("main.html");
-            LOGGER.info("Login not null! Send redirect to main!");
-        } catch (IOException ex) {
-            LOGGER.error("Error: " + ex);
-        }
-    }
-
     public void sendRedirectSendMessageSuccessfully(HttpServletResponse response) {
         try {
-            response.sendRedirect("support.html");
+            response.sendRedirect("index.html");
             LOGGER.info("Send message successfully! Send redirect to support!");
         } catch (IOException ex) {
             LOGGER.error("Error: " + ex);

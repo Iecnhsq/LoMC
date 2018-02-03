@@ -9,7 +9,16 @@
         <property name="hibernate.connection.username">contac01_prilosh</property>
         <property name="hibernate.connection.password">4h57futz</property>
         <property name="show_sql">true</property>
+        <mapping class="entity.BasicCard"/>
         <mapping class="entity.User"/>
-        <mapping class="entity.News"/>
+        <mapping class="entity.News"/>   
+        <mapping class="entity.Mage"/>
+        <mapping class="entity.Priest"/>
+        <mapping class="entity.Warrior"/>
+        <mapping class="entity.Thief"/>
+        <mapping class="entity.Hunter"/>
+        <mapping class="entity.Shaman"/>
+        
+        <mapping class="entity.Support"/>
     </session-factory>
 </hibernate-configuration>

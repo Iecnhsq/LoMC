@@ -1,6 +1,12 @@
 <%@include file="../jspf/headerIsLogin.jspf" %>
-<%@include file="../jspf/navigationIsLogin.jspf" %>
-<div class="comdiv">
-    Content
+<div class="block_parent">
+    <div class="clear"></div>
+    <div class="block_left">
+        Wait
+    </div>
+    <div class="block_right">
+        <%@include file="../jspf/navigationIsLogin.jspf" %>
+    </div>
+    <div class="clear"></div>
 </div>
 <%@include file="../jspf/footer.jspf" %>

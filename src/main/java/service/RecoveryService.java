@@ -47,15 +47,6 @@ public class RecoveryService {
         request.getSession().setAttribute("ca", ca);
     }
 
-    public void sendRedirectLoginInSesion(HttpServletResponse response) {
-        try {
-            response.sendRedirect("main.html");
-            LOGGER.info("Login not null! Send redirect to main!");
-        } catch (IOException ex) {
-            LOGGER.error("Error: " + ex);
-        }
-    }
-
     public void sendRedirectSendRecoveryMail(HttpServletResponse response) {
         try {
             response.sendRedirect("answer.html");

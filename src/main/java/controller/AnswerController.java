@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import service.CommonService;
 import service.RecoveryService;
 
 @Controller
@@ -16,12 +17,14 @@ public class AnswerController {
 
     @Autowired
     private RecoveryService recoveryService;
+    @Autowired
+    private CommonService commonService;
 
     @RequestMapping("/answer.html")
     public ModelAndView answer(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            recoveryService.sendRedirectLoginInSesion(response);
+            commonService.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("answer");
             String answer = request.getParameter("answer");

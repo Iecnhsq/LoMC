@@ -1,10 +1,8 @@
-<%@ page pageEncoding="UTF-8" %>
-<div class="comdiv">		
-    <a href="about.html" onclick="playAudio();">About</a><br>
-    <a href="index.html" onclick="playAudio();">Index</a><br>
-    <a href="login.html" onclick="playAudio();">Login</a><br>
-    <a href="news.html" onclick="playAudio();">News</a><br>
-    <a href="recovery.html" onclick="playAudio();">Recovery</a><br>
-    <a href="register.html" onclick="playAudio();">Register</a><br>
-    <a href="support.html" onclick="playAudio();">Support</a>		
-</div>
+<%@ page pageEncoding="UTF-8" %>		
+<a href="about.html" onclick="playAudio();">About</a><br>
+<a href="index.html" onclick="playAudio();">Index</a><br>
+<a href="login.html" onclick="playAudio();">Login</a><br>
+<a href="news.html" onclick="playAudio();">News</a><br>
+<a href="recovery.html" onclick="playAudio();">Recovery</a><br>
+<a href="register.html" onclick="playAudio();">Register</a><br>
+<a href="support.html" onclick="playAudio();">Support</a>		

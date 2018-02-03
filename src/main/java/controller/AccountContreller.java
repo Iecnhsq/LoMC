@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import service.AccountService;
+import service.CommonService;
 
 @Controller
 public class AccountContreller {
@@ -21,17 +22,14 @@ public class AccountContreller {
     private AccountService accountService;
     @Autowired
     private UserDAO udao;
+    @Autowired
+    private CommonService commonService;
 
     @RequestMapping("/account.html")
     public ModelAndView account(HttpServletRequest request, HttpServletResponse response) {
         String login = (String) request.getSession().getAttribute("login");
         if (login == null) {
-            try {
-                response.sendRedirect("index.html");
-                LOGGER.info("Login is null! Send redirect to index!");
-            } catch (IOException ex) {
-                LOGGER.error("Error: " + ex);
-            }
+            commonService.sendRedirectLoginNullInSesion(response);
         } else {
             User user = udao.getUserByLogin(login);
             String phone = request.getParameter("phone");

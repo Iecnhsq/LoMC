@@ -1,5 +1,14 @@
-<%@ page pageEncoding="UTF-8" %>
-<div class="comdiv">
-    <a href="account.html" onclick="playAudio();">Account</a>
-    <a href="main.html?exit=true" onclick="playAudio();">Exit</a>
-</div>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
+<a href="account.html" onclick="playAudio();">Account</a><br>
+<a href="class.html" onclick="playAudio();">Class</a><br>
+<a href="cards.html" onclick="playAudio();">Cards</a><br>
+<a href="wait.html" onclick="playAudio();">Wait</a><br>
+<a href="premium.html" onclick="playAudio();">Premium</a><br>
+<a href="main.html" onclick="playAudio();">Main</a><br>
+<c:if test="${isAdmP}">
+    <p>
+        <a href="admTools.html">admTools</a>
+    </p>
+</c:if>
+<a href="main.html?exit=true" onclick="playAudio();">Exit</a>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import service.CommonService;
 import service.RecoveryService;
 
 @Controller
@@ -20,12 +21,14 @@ public class RecoveryController {
 
     @Autowired
     private RecoveryService recoveryService;
+    @Autowired
+    private CommonService commonService;
 
     @RequestMapping(value = "/recovery.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView recovery(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            recoveryService.sendRedirectLoginInSesion(response);
+            commonService.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("recovery");
             String login = request.getParameter("login");

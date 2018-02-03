@@ -1,7 +1,12 @@
 package service;
 
+import com.google.gson.Gson;
 import dao.UserDAO;
+import entity.Deck;
+import entity.User;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
@@ -19,13 +24,39 @@ public class RegistrationService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendRedirectLoginInSesion(HttpServletResponse response) {
-        try {
-            response.sendRedirect("main.html");
-            LOGGER.info("Login not null! Send redirect to main!");
-        } catch (IOException ex) {
-            LOGGER.error("Error: " + ex);
-        }
+    public User getUserInDB(String login) {
+        return udao.getUserByLogin(login);
+    }
+
+    public boolean registerUserInDb(String login, String password, String city, String phone, String email) {
+        User user = new User(new Random().nextInt(), login, password, new Date(), 0, 0, new Gson().toJson(new Deck()), "Mage", 0, city, phone, email, 'n');
+        udao.addUser(user);
+        LOGGER.info("Registre User in DB!");
+        return true;
+    }
+
+    public boolean userExist(User u) {
+        return u != null;
+    }
+
+    public boolean loginValid(String login) {
+        return !(login == null || login.length() < 5);
+    }
+
+    public boolean passwordValid(String password, String password2) {
+        return !(password == null || password2 == null || !password.equals(password2));
+    }
+
+    public boolean cityValid(String city) {
+        return !(city == null || city.length() < 3);
+    }
+
+    public boolean phoneValid(String phone) {
+        return !(phone == null || phone.length() < 10);
+    }
+
+    public boolean emailValid(String email) {
+        return !(email == null || email.length() < 5);
     }
 
     public void sendRedirectRegistersussefuly(HttpServletResponse response) {
