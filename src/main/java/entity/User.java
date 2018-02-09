@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cg_user")
@@ -14,8 +16,15 @@ public class User implements Serializable {
 
     @Id
     private int id;
+
+    @NotEmpty(message = "Please, enter your login!")
+    @Size(min = 3, max = 15, message = "Your login must between 3 and 15 characters")
     private String login;
+
+    @NotEmpty(message = "Please, enter your password!")
+    @Size(min = 4, max = 15, message = "Your password must between 4 and 15 characters")
     private String pass;
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     private int lvl;

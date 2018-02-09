@@ -1,37 +1,31 @@
 package controller;
 
-import dao.SupportDAOImplementation;
-import entity.Support;
-import java.util.Date;
-import java.util.Random;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import service.AboutNewsSupportService;
-import service.CommonService;
+import service.AboutNewsSupportServiceInterface;
+import service.CommonServiceInterface;
 
 @Controller
 public class AboutNewsSupportController {
 
     public static final Logger LOGGER = Logger.getLogger(AboutNewsSupportController.class);
 
-    @Autowired
-    private AboutNewsSupportService aboutNewsSupportService;
-    @Autowired
-    private CommonService commonService;
-    @Autowired
-    private SupportDAOImplementation supportDAOImplementation;
+    @Resource(name = "CommonServiceInterface")
+    private CommonServiceInterface commonServiceInterface;
+    @Resource(name = "AboutNewsSupportServiceInterface")
+    private AboutNewsSupportServiceInterface aboutNewsSupportServiceInterface;
 
     @RequestMapping("/about.html")
     public ModelAndView about(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            commonService.sendRedirectLoginInSesion(response);
+            commonServiceInterface.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("about");
             return model;
@@ -43,10 +37,10 @@ public class AboutNewsSupportController {
     public ModelAndView news(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            commonService.sendRedirectLoginInSesion(response);
+            commonServiceInterface.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("news");
-            aboutNewsSupportService.getNews(model);
+            aboutNewsSupportServiceInterface.getNews(model);
             return model;
         }
         return null;
@@ -56,40 +50,32 @@ public class AboutNewsSupportController {
     public ModelAndView support(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            commonService.sendRedirectLoginInSesion(response);
+            commonServiceInterface.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("support");
             String problem = request.getParameter("problem");
-            if (problem == null) {
+            if (problem == null || problem.length() < 5) {
                 return model;
             } else {
                 String subject = request.getParameter("subject");
-                if (subject == null) {
+                if (subject == null || subject.length() < 5) {
                     return model;
                 } else {
                     String email = request.getParameter("email");
-                    if (email == null) {
+                    if (email == null || email.length() < 5) {
                         return model;
                     } else {
                         String message = request.getParameter("message");
-                        if (message == null) {
+                        if (message == null || message.length() < 10) {
                             return model;
                         } else {
-                            Support support = new Support(new Random().nextInt(), problem, subject, email, message, new Date());
-                            supportDAOImplementation.addSuppotLetter(support);
-                            aboutNewsSupportService.sendMail(problem, message, email, subject);
-                            aboutNewsSupportService.sendRedirectSendMessageSuccessfully(response);
+                            aboutNewsSupportServiceInterface.addSupportLetterInDb(problem, subject, message, email);
+                            aboutNewsSupportServiceInterface.sendMail(problem, message, email, subject);
+                            aboutNewsSupportServiceInterface.sendRedirectSendMessageSuccessfully(response);
                         }
                     }
                 }
             }
-//            if (!aboutNewsSupportService.allParametrNull(problem, subject, email, message)) {
-//                LOGGER.info("Method 'allParametrNull' is null!");
-//                return model;
-//            } else {
-//                if (!aboutNewsSupportService.getProblem(problem) && !aboutNewsSupportService.getSubject(subject) && !aboutNewsSupportService.getEmail(email) && !aboutNewsSupportService.getMessage(message)) {
-//                    LOGGER.info("Methods 'get' is not valid!");
-//                    return model;
         }
         return null;
     }

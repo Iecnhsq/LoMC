@@ -3,11 +3,14 @@ package service;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
-public class CommonService {
+@Service(value = "CommonServiceInterface")
+public class CommonServiceImpl implements CommonServiceInterface {
 
-    private static final Logger LOGGER = Logger.getLogger(CommonService.class);
+    private static final Logger LOGGER = Logger.getLogger(CommonServiceImpl.class);
 
+    @Override
     public void sendRedirectLoginNullInSesion(HttpServletResponse response) {
         try {
             response.sendRedirect("index.html");
@@ -17,6 +20,7 @@ public class CommonService {
         }
     }
 
+    @Override
     public void sendRedirectLoginInSesion(HttpServletResponse response) {
         try {
             response.sendRedirect("main.html");

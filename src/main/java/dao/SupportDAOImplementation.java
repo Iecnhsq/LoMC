@@ -5,7 +5,9 @@ import hibernate.HibernateUtil;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "SupportDAOInterface")
 public class SupportDAOImplementation implements SupportDAOInterface {
 
     private static final Logger LOGGER = Logger.getLogger(SupportDAOImplementation.class);
@@ -53,7 +55,6 @@ public class SupportDAOImplementation implements SupportDAOInterface {
     public Support getSupportById(int id) {
         Support supportById;
         Session s = HibernateUtil.getSESSIONFACTORY().openSession();
-        supportById = null;
         s.beginTransaction();
         supportById = (Support) s.createQuery("FROM Support WHERE id='" + id + "'").uniqueResult();
         s.getTransaction().commit();

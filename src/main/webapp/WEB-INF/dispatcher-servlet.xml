@@ -11,11 +11,13 @@
         
     <mvc:annotation-driven />
     
-    <context:annotation-config/>
-    
     <mvc:resources mapping="/src/**" location="/src/"/>
     
     <context:component-scan base-package="controller"/>
+    
+    <context:component-scan base-package="dao"/>
+    
+    <context:component-scan base-package="service"/>
     
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -39,24 +41,5 @@
             </props>
         </property>
     </bean>
-    
-    <bean id="udao" class="dao.UserDAO"/>
-    <bean id="ndao" class="dao.NewsDAO"/>
-    <bean id="cdao" class="dao.CardDAO"/>
-    <bean id="supportDAOImplementation" class="dao.SupportDAOImplementation"/>
-    
-    <bean id="aboutNewsSupportService" class="service.AboutNewsSupportService"/>
-    <bean id="indexService" class="service.IndexService"/>
-    <bean id="loginService" class="service.LoginService"/>
-    <bean id="mainService" class="service.MainService"/>
-    <bean id="recoveryService" class="service.RecoveryService"/>
-    <bean id="registrationService" class="service.RegistrationService"/>
-    <bean id="accountService" class="service.AccountService"/>
-    <bean id="classService" class="service.ClassService"/>
-    <bean id="cardsService" class="service.CardsService"/>
-    <bean id="waitService" class="service.WaitService"/>
-    <bean id="premiumService" class="service.PremiumService"/>
-    
-    <bean id="commonService" class="service.CommonService"/>
     
 </beans>

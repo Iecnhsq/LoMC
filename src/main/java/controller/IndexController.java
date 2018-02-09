@@ -1,30 +1,30 @@
 package controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import service.CommonService;
-import service.IndexService;
+import service.CommonServiceInterface;
+import service.IndexServiceInterface;
 
 @Controller
 public class IndexController {
 
     private static final Logger LOGGER = Logger.getLogger(IndexController.class);
 
-    @Autowired
-    private IndexService indexService;
-    @Autowired
-    private CommonService commonService;
+    @Resource(name = "IndexServiceInterface")
+    private IndexServiceInterface indexServiceInterface;
+    @Resource(name = "CommonServiceInterface")
+    private CommonServiceInterface commonServiceInterface;
 
     @RequestMapping("/index.html")
-    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {// throws Exception
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
-            commonService.sendRedirectLoginInSesion(response);
+            commonServiceInterface.sendRedirectLoginInSesion(response);
         } else {
             ModelAndView model = new ModelAndView("index");
             return model;
