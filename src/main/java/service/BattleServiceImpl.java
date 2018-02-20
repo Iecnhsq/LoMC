@@ -15,11 +15,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 import ourlists.OnTableList;
 
-public class BattleService {
+@Service(value = "BattleServiceInterface")
+public class BattleServiceImpl implements BattleServiceInterface {
 
-    private static final Logger LOGGER = Logger.getLogger(BattleService.class);
+    private static final Logger LOGGER = Logger.getLogger(BattleServiceImpl.class);
 
     @Resource(name = "CardHolder")
     private CardHolder ch;

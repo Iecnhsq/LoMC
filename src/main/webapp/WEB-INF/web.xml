@@ -41,6 +41,7 @@
         <url-pattern>/wait.html</url-pattern>
         <url-pattern>/premium.html</url-pattern>
         <url-pattern>/battle.html</url-pattern>
+        <url-pattern>/finish.html</url-pattern>
         
         <url-pattern>/admTools.html</url-pattern>
         <url-pattern>/addNews.html</url-pattern>

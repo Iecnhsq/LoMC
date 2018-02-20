@@ -1,7 +1,7 @@
 package controller;
 
 import battle.Battle;
-import service.BattleService;
+import service.BattleServiceImpl;
 import holders.BattlesHolder;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class BattleController {
     private CommonServiceInterface commonServiceInterface;
 
     @Resource(name = "BattleService")
-    private BattleService bs;
+    private BattleServiceImpl bs;
     @Resource(name = "BattlesHolder")
     private BattlesHolder bh;
 
