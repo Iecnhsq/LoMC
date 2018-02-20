@@ -31,26 +31,6 @@ public class AboutNewsSupportServiceImpl implements AboutNewsSupportServiceInter
     @Autowired
     private JavaMailSender mailSender;
 
-    public boolean allParametrNull(String problem, String subject, String email, String message) {
-        return !(problem == null || subject == null || email == null || message == null);
-    }
-
-    public boolean getProblem(String problem) {
-        return !(problem.length() < 10);
-    }
-
-    public boolean getSubject(String subject) {
-        return !(subject.length() < 10);
-    }
-
-    public boolean getEmail(String email) {
-        return !(email.length() < 5);
-    }
-
-    public boolean getMessage(String message) {
-        return !(message.length() < 25 && message.length() > 250);
-    }
-
     @Override
     public void getNews(ModelAndView model) {
         List<News> allnews = ndao.getAllNews();

@@ -184,5 +184,5 @@ public abstract class Card implements Serializable, Cloneable {
     public void setSpell(String spell) {
         this.spell = spell;
     }
-    
+
 }

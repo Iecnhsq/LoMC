@@ -13,7 +13,7 @@ import service.CommonServiceInterface;
 @Controller
 public class CardsController {
 
-    public static final Logger LOGGER = Logger.getLogger(CardsController.class);
+    private static final Logger LOGGER = Logger.getLogger(CardsController.class);
 
     @Resource(name = "CardsServiceInterface")
     private CardsServiceInterface cardsServiceInterface;

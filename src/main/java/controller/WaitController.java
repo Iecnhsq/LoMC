@@ -13,7 +13,7 @@ import service.WaitServiceInterface;
 @Controller
 public class WaitController {
 
-    public static final Logger LOGGER = Logger.getLogger(WaitController.class);
+    private static final Logger LOGGER = Logger.getLogger(WaitController.class);
 
     @Resource(name = "WaitServiceInterface")
     private WaitServiceInterface waitServiceInterface;

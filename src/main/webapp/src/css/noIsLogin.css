@@ -57,11 +57,9 @@ input[type='submit'] {
     width: 1044px;
     text-align: center;
 }
-
 .clear {
     clear: both;
 }
-
 .block_left {
     float: left;
     border-radius: 10px;
@@ -69,7 +67,6 @@ input[type='submit'] {
     padding: 10px;
     background: rgba(48, 48, 48, 0.4);
 }
-
 .block_right {
     float: right;
     border-radius: 10px;

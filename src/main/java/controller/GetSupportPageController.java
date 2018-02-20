@@ -24,7 +24,7 @@ public class GetSupportPageController {
     @RequestMapping(value = "/getSupportPage.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView getSupportPage(HttpServletRequest request, HttpServletResponse response) {
         String login = (String) request.getSession().getAttribute("login");
-        if (login == null || !login.equals("admin")) {
+        if (aDMServiceInterface.loginRequest(login)) {
             aDMServiceInterface.sendRedirectLoginNullInSesionOrNotAdmin(response);
         } else {
             ModelAndView model = new ModelAndView("getSupportPage");

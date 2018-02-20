@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cg_news")
@@ -15,10 +17,19 @@ public class News implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+
+    @NotEmpty(message = "Please, enter subject!")
+    @Size(min = 10, message = "Should be more than 10 characters")
     private String subject;
+
+    @NotEmpty(message = "Please, enter author!")
     private String author;
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timein;
+
+    @NotEmpty(message = "Please, enter text!")
+    @Size(min = 25, message = "Should be more than 25 characters")
     private String text;
 
     public News() {

@@ -16,7 +16,7 @@ import service.CommonServiceInterface;
 @Controller
 public class AccountContreller {
 
-    public static final Logger LOGGER = Logger.getLogger(AccountContreller.class);
+    private static final Logger LOGGER = Logger.getLogger(AccountContreller.class);
 
     @Resource(name = "AccountServiceInterface")
     private AccountServiceInterface accountServiceInterface;

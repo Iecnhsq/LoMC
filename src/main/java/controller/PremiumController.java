@@ -14,7 +14,7 @@ import service.PremiumServiceInterface;
 @Controller
 public class PremiumController {
 
-    public static final Logger LOGGER = Logger.getLogger(PremiumController.class);
+    private static final Logger LOGGER = Logger.getLogger(PremiumController.class);
 
     @Resource(name = "PremiumServiceInterface")
     private PremiumServiceInterface premiumServiceInterface;

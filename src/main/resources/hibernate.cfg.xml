@@ -20,7 +20,5 @@
         <mapping class="entity.Shaman"/>
         
         <mapping class="entity.Support"/>
-        
-        <mapping class="entity.Error"/>
     </session-factory>
 </hibernate-configuration>

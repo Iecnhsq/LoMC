@@ -15,7 +15,7 @@ import service.MainServiceInterface;
 @Controller
 public class MainController {
 
-    public static final Logger LOGGER = Logger.getLogger(MainController.class);
+    private static final Logger LOGGER = Logger.getLogger(MainController.class);
     private static final String ADMLOGIN = "admin";
 
     @Resource(name = "UserDAOInterface")

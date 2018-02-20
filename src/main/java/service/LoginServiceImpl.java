@@ -27,13 +27,8 @@ public class LoginServiceImpl implements LoginServiceInterface {
     }
 
     @Override
-    public boolean loginValid(String login) {
-        return !(login == null || login.length() < 1);
-    }
-
-    @Override
     public boolean passwordValid(String password, User u) {
-        return !(password == null || !u.getPass().equals(password));
+        return u.getPass().equals(password);
     }
 
     @Override

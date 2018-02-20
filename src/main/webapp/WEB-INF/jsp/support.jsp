@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="../jspf/headerNoIsLogin.jspf" %>
 <div class="block_parent">
     <div class="clear"></div>
@@ -9,13 +11,35 @@
             We will try to solve it in the shortest possible time.
         </p>
         <fieldset>
-            <form action="support.html" method="POST">
-                <input type="text" placeholder="Your problem" required name="problem"/><br>
-                <input type="text" placeholder="Subject" required name="subject"/><br>
-                <input type="email" placeholder="Your E-mail" name="email" required/><br>
-                <textarea required name="message" maxlength="250" placeholder="Enter Your message..."></textarea><br>             
-                <input type="submit" value="Send" onclick="playAudio();"/>
-            </form>
+            <table>
+                <form:form action="support" commandName="supportForm">
+                    <tr>
+                        <td>Problem: </td>
+                        <td><form:input path="problem" size="30"/></td>
+                        <td><form:errors path="problem" cssClass="error"/></td>
+                    </tr>
+                    <tr>
+                        <td>Subject: </td>
+                        <td><form:input path="subject" size="30"/></td>
+                        <td><form:errors path="subject" cssClass="error"/></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail: </td>
+                        <td><form:input path="email" size="30"/></td>
+                        <td><form:errors path="email" cssClass="error"/></td>
+                    </tr>
+                    <tr>
+                        <td>Message: </td>
+                        <td><form:textarea path="message" maxlength="250"/></td>
+                        <td><form:errors path="message" cssClass="error"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="center"><input type="submit" value="Send" onclick="playAudio();"/></td>
+                        <td></td>
+                    </tr>
+                </form:form>
+            </table>
         </fieldset>
     </div>
     <div class="block_right">

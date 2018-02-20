@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cg_support")
@@ -15,10 +17,23 @@ public class Support implements Serializable {
 
     @Id
     private int id;
+
+    @NotEmpty(message = "Please, enter your problem!")
+    @Size(min = 10, message = "Should be more than 10 characters")
     private String problem;
+
+    @NotEmpty(message = "Please, enter your subject!")
+    @Size(min = 10, message = "Should be more than 10 characters")
     private String subject;
+
+    @NotEmpty(message = "Please, enter your email!")
+    @Size(min = 5, message = "Should be more than 5 characters")
     private String email;
+
+    @NotEmpty(message = "Please, enter your message!")
+    @Size(min = 25, message = "Should be more than 25 characters")
     private String message;
+
     @Temporal(TemporalType.DATE)
     private Date date;
 

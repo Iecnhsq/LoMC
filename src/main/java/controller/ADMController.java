@@ -21,7 +21,7 @@ public class ADMController {
     @RequestMapping(value = "/admTools.html", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView admTools(HttpServletRequest request, HttpServletResponse response) {
         String login = (String) request.getSession().getAttribute("login");
-        if (login == null || !login.equals("admin")) {
+        if (aDMServiceInterface.loginRequest(login)) {
             aDMServiceInterface.sendRedirectLoginNullInSesionOrNotAdmin(response);
         } else {
             ModelAndView model = new ModelAndView("admTools");

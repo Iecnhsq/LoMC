@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface LoginServiceInterface {
 
-    public boolean loginValid(String login);
-
     public User getUserInDB(String login);
 
     public boolean userExist(User u);

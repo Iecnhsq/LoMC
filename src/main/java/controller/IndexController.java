@@ -21,7 +21,7 @@ public class IndexController {
     private CommonServiceInterface commonServiceInterface;
 
     @RequestMapping("/index.html")
-    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {// throws Exception
+    public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {
             commonServiceInterface.sendRedirectLoginInSesion(response);

@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 public class ADMServiceImplementation implements ADMServiceInterface {
 
     private static final Logger LOGGER = Logger.getLogger(ADMServiceImplementation.class);
+    private static final String LOGIN = "admin";
+
+    @Override
+    public boolean loginRequest(String login) {
+        return !(login == null || !login.equals(LOGIN));
+    }
 
     @Override
     public void sendRedirectAndRemoveAttributeLogin(HttpServletRequest request, HttpServletResponse response) {
