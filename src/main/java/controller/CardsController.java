@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,9 +23,9 @@ public class CardsController {
 
     private static final Logger LOGGER = Logger.getLogger(CardsController.class);
 
-    @Resource(name = "UserHolder")
+    @Autowired
     private UserHolder uh;
-    @Resource(name = "CardHolder")
+    @Autowired
     private CardHolder ch;
     @Resource(name = "UserDAOInterface")
     private UserDAOInterface udao;

@@ -11,10 +11,10 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +23,9 @@ public class CardsServiceImpl implements CardsServiceInterface {
 
     private static final Logger LOGGER = Logger.getLogger(CardsServiceImpl.class);
 
-    @Resource(name = "UserHolder")
+    @Autowired
     private UserHolder uh;
-    @Resource(name = "CardHolder")
+    @Autowired
     private CardHolder ch;
 
     @Override

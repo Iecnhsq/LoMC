@@ -19,6 +19,8 @@
     
     <context:component-scan base-package="service"/>
     
+    <context:annotation-config/>
+    
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -41,5 +43,11 @@
             </props>
         </property>
     </bean>
+    
+    <bean id="bh" class="holders.BattlesHolder"/>
+    <bean id="uh" class="holders.UserHolder"/>
+    <bean id="ch" class="holders.CardHolder"/>
+    <bean id="wh" class="holders.WaitHolder"/>
+    <bean id="spellId" class="holders.SpellId"/>
     
 </beans>

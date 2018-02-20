@@ -13,9 +13,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,9 +24,9 @@ public class WaitServiceImpl implements WaitServiceInterface {
 
     private static final Logger LOGGER = Logger.getLogger(WaitServiceImpl.class);
 
-    @Resource(name = "CardHolder")
+    @Autowired
     private CardHolder ch;
-    @Resource(name = "UserHolder")
+    @Autowired
     private UserHolder uh;
 
     @Override

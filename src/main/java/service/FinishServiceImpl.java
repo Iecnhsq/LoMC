@@ -5,6 +5,7 @@ import entity.User;
 import holders.UserHolder;
 import javax.annotation.Resource;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service(value = "FinishServiceInterface")
@@ -14,7 +15,7 @@ public class FinishServiceImpl implements FinishServiceInterface {
 
     @Resource(name = "UserDAOInterface")
     private UserDAOInterface udao;
-    @Resource(name = "UserHolder")
+    @Autowired
     private UserHolder uh;
 
     @Override

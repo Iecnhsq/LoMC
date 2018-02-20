@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ourlists.OnTableList;
 
@@ -23,11 +23,12 @@ public class BattleServiceImpl implements BattleServiceInterface {
 
     private static final Logger LOGGER = Logger.getLogger(BattleServiceImpl.class);
 
-    @Resource(name = "CardHolder")
+    @Autowired
     private CardHolder ch;
-    @Resource(name = "SpellId")
+    @Autowired
     private SpellId spellId;
 
+    @Override
     public void finish(HttpServletResponse response) {
         try {
             response.sendRedirect("finish.html");
@@ -36,6 +37,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public void setDeckCards(Battle b) {
         b.p1Deck = setDeck(b.p1.getCards());
         System.out.println("deck in battle:" + b.p1Deck.size());
@@ -67,6 +69,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         return l;
     }
 
+    @Override
     public Card add1CardToHand(List<Card> pDeck) {
         if (pDeck.size() > 0) {
             return pDeck.remove(new Random().nextInt(pDeck.size()));
@@ -75,6 +78,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public int addPoint(int health, int damage, int points) {
         int point = 0;
         if (health > damage) {
@@ -87,6 +91,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
 
     }
 
+    @Override
     public void endTurn(Battle b, String login) {
         if (b.p1.getLogin().equals(login)) {
             p1EndTurn(b);
@@ -96,6 +101,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public void beginNewTurn(Battle b) {
         b.p1MadeTurn = false;
         b.p2MadeTurn = false;
@@ -137,6 +143,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         b.p2ChosenHandCard = null;
     }
 
+    @Override
     public void p1CreatureTurn(Battle b, int id) {
         if (id < 0) {
             p1CreatureToCreatureAttack(b, id);
@@ -147,6 +154,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public void p2CreatureTurn(Battle b, int id) {
         if (id < 0) {
             p2CreatureToCreatureAttack(b, id);
@@ -335,6 +343,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         b.p2AttackCard = null;
     }
 
+    @Override
     public void p1HeroPowerAttack(Battle b, int id) {
         if (id == 0) {
             p1HeroAttackEnemyHero(b);
@@ -347,6 +356,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public void p2HeroPowerAttack(Battle b, int id) {
         if (id == 0) {
             p2HeroAttackEnemyHero(b);
@@ -455,6 +465,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         });
     }
 
+    @Override
     public void p1PutCard(Card c, Battle b) {
         if (c.getLevel() <= b.p1Mana) {
             System.out.println(c.getName());
@@ -468,6 +479,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public void p2PutCard(Card c, Battle b) {
         if (c.getLevel() <= b.p2Mana) {
             System.out.println(c.getName());
@@ -481,6 +493,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         }
     }
 
+    @Override
     public boolean doSpell(String spell, Battle b) {
         if (spell != null) {
             SpellSet spellSet = new Gson().fromJson(spell, SpellSet.class);
@@ -492,6 +505,7 @@ public class BattleServiceImpl implements BattleServiceInterface {
         return true;
     }
 
+    @Override
     public void clearDefeatedCard(OnTableList onTablep1, OnTableList onTablep2) {
         onTablep1.stream().filter((c) -> (c.getHealth() < 1)).forEachOrdered((c) -> {
             onTablep1.remove(c);

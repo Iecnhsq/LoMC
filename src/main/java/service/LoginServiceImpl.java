@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service(value = "LoginServiceInterface")
 public class LoginServiceImpl implements LoginServiceInterface {
 
-    public static final Logger LOGGER = Logger.getLogger(LoginServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(LoginServiceImpl.class);
 
     @Resource(name = "UserDAOInterface")
     private UserDAOInterface udao;

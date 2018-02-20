@@ -1,15 +1,16 @@
 package controller;
 
 import battle.Battle;
-import service.BattleServiceImpl;
 import holders.BattlesHolder;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import service.BattleServiceInterface;
 import service.CommonServiceInterface;
 
 @Controller
@@ -19,10 +20,9 @@ public class BattleController {
 
     @Resource(name = "CommonServiceInterface")
     private CommonServiceInterface commonServiceInterface;
-
-    @Resource(name = "BattleService")
-    private BattleServiceImpl bs;
-    @Resource(name = "BattlesHolder")
+    @Resource(name = "BattleServiceInterface")
+    private BattleServiceInterface bs;
+    @Autowired
     private BattlesHolder bh;
 
     @RequestMapping("/battle.html")

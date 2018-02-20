@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,13 +20,13 @@ public class FinishController {
 
     private static final Logger LOGGER = Logger.getLogger(FinishController.class);
 
-    @Resource(name = "BattlesHolder")
+    @Autowired
     private BattlesHolder bh;
     @Resource(name = "FinishServiceInterface")
     private FinishServiceInterface finishServiceInterface;
     @Resource(name = "CommonServiceInterface")
     private CommonServiceInterface commonServiceInterface;
-    @Resource(name = "UserHolder")
+    @Autowired
     private UserHolder uh;
 
     @RequestMapping("/finish.html")
