@@ -13,4 +13,6 @@ public interface LoginServiceInterface {
 
     public void sendRedirectLoginInUser(HttpServletResponse response);
 
+    public void getAllCardsInDB();
+
 }

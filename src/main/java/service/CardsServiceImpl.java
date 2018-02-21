@@ -41,7 +41,7 @@ public class CardsServiceImpl implements CardsServiceInterface {
     @Override
     public void fullDeck(HttpServletResponse response) {
         try {
-            response.sendRedirect("card.html");
+            response.sendRedirect("cards.html");
         } catch (IOException ex) {
             LOGGER.error("Error: " + ex);
         }

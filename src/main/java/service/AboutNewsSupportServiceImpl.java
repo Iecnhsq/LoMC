@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Service(value = "AboutNewsSupportServiceInterface")
 public class AboutNewsSupportServiceImpl implements AboutNewsSupportServiceInterface {
 
-    public static final Logger LOGGER = Logger.getLogger(AboutNewsSupportServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(AboutNewsSupportServiceImpl.class);
     private static final String TOMAIL = "cardgamesupp@gmail.com";
 
     @Resource(name = "NewsDAOInterface")

@@ -1,12 +1,14 @@
 package controller;
 
 import entity.User;
+import holders.UserHolder;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +27,8 @@ public class LoginController {
     private LoginServiceInterface loginServiceInterface;
     @Resource(name = "CommonServiceInterface")
     private CommonServiceInterface commonServiceInterface;
+    @Autowired
+    private UserHolder uh;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String viewLogin(Map<String, Object> model) {
@@ -56,6 +60,8 @@ public class LoginController {
                         return "login";
                     } else {
                         request.getSession().setAttribute("login", login);
+                        uh.set(u);
+                        loginServiceInterface.getAllCardsInDB();
                         loginServiceInterface.sendRedirectLoginInUser(response);
                     }
                 }

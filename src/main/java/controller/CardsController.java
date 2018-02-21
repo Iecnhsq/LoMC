@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import service.CardsServiceInterface;
 import service.CommonServiceInterface;
@@ -34,7 +35,7 @@ public class CardsController {
     @Resource(name = "CommonServiceInterface")
     private CommonServiceInterface commonServiceInterface;
 
-    @RequestMapping("/cards.html")
+    @RequestMapping(value = "/cards.html", method = RequestMethod.GET)
     public ModelAndView cards(HttpServletRequest request, HttpServletResponse response) {
         String login = (String) request.getSession().getAttribute("login");
         if (login == null) {
