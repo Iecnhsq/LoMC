@@ -17,8 +17,7 @@
         <mapping class="entity.Warrior"/>
         <mapping class="entity.Thief"/>
         <mapping class="entity.Hunter"/>
-        <mapping class="entity.Shaman"/>
-        
+        <mapping class="entity.Shaman"/>        
         <mapping class="entity.Support"/>
     </session-factory>
 </hibernate-configuration>

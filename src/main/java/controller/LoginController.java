@@ -18,6 +18,7 @@ import service.CommonServiceInterface;
 import service.LoginServiceInterface;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 
     private static final Logger LOGGER = Logger.getLogger(LoginController.class);
@@ -30,14 +31,20 @@ public class LoginController {
     @Autowired
     private UserHolder uh;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String viewLogin(Map<String, Object> model) {
-        User user = new User();
-        model.put("userForm", user);
-        return "login";
+    @RequestMapping(method = RequestMethod.GET)
+    public String viewLogin(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
+        String loginInSesion = (String) request.getSession().getAttribute("login");
+        if (loginInSesion != null) {
+            commonServiceInterface.sendRedirectLoginInSesion(response);
+        } else {
+            User user = new User();
+            model.put("userForm", user);
+            return "login";
+        }
+        return null;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String doLogin(@Valid @ModelAttribute("userForm") User userForm, BindingResult result, Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
         String loginInSesion = (String) request.getSession().getAttribute("login");
         if (loginInSesion != null) {

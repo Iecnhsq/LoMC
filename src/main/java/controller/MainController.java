@@ -42,6 +42,7 @@ public class MainController {
                 mainServiceInterface.sendRedirectUserLogout(response);
             } else {
                 isLogin = true;
+                mainServiceInterface.getUserCards(model, u.getClasss());
                 model.addObject("user", u);
                 if (login.equals(ADMLOGIN)) {
                     isAdmP = true;

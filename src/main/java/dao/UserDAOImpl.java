@@ -3,6 +3,8 @@ package dao;
 import entity.User;
 import hibernate.HibernateUtil;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Repository;
 public class UserDAOImpl implements UserDAOInterface {
 
     private static final Logger LOGGER = Logger.getLogger(UserDAOImpl.class);
+    
+    public EntityManager em = Persistence.createEntityManagerFactory("").createEntityManager();
 
     @Override
     public List<User> getAllUser() {

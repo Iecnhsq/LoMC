@@ -7,6 +7,7 @@ import entity.Support;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 @Service(value = "AboutNewsSupportServiceInterface")
 public class AboutNewsSupportServiceImpl implements AboutNewsSupportServiceInterface {
@@ -32,9 +32,9 @@ public class AboutNewsSupportServiceImpl implements AboutNewsSupportServiceInter
     private JavaMailSender mailSender;
 
     @Override
-    public void getNews(ModelAndView model) {
+    public void getNews(Map<String, Object> model) {
         List<News> allnews = ndao.getAllNews();
-        model.addObject("allnews", allnews);
+        model.put("allnews", allnews);
     }
 
     @Override

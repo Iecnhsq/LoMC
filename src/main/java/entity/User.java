@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -15,6 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class User implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotEmpty(message = "Please, enter your login!")
@@ -25,7 +29,7 @@ public class User implements Serializable {
     @Size(min = 4, max = 15, message = "Your password must between 4 and 15 characters")
     private String pass;
 
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     private int lvl;
     private int points;

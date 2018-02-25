@@ -1,11 +1,11 @@
 package service;
 
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.ModelAndView;
 
 public interface AboutNewsSupportServiceInterface {
 
-    public void getNews(ModelAndView model);
+    public void getNews(Map<String, Object> model);
 
     public void sendMail(String problem, String message, String email, String subject);
 

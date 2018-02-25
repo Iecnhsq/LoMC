@@ -3,7 +3,7 @@
 <div style="margin: 10px auto; width: 750px; text-align: left">
     <fieldset class="${heroClass}" style="border: none">
         <c:forEach items="${cardClass}" var="ch">
-            <a href="card.html?id=${ch.id}" class="tooltip">
+            <a href="cards.html?id=${ch.id}" class="tooltip">
                 <span class="custom help">
                     <img src="src/img/Help.png" alt="Helper" height="48" width="48" />
                     <em>${ch.name}</em>
